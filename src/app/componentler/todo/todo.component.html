@@ -1,0 +1,44 @@
+<br>
+<br>
+<div class="input-group mb-3">
+  <input type="text" class="form-control" #txtYazi style="border-radius: 5px;" placeholder="Yazmaya başlayın..." aria-label="Recipient's username" (keyup.enter)="ekle(txtYazi)" aria-describedby="button-addon2">
+  <button class="btn btn-outline-secondary" type="button" id="btnEkle" style="width: 150px; margin-left: 15px; border-radius: 5px; font-size: 16px;" (click)="ekle(txtYazi)">Ekle</button>
+</div>
+
+
+<div class="bd-example" *ngIf="yapilacaklar.length; else alertt">
+  <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Yapılacaklar</th>
+          <th scope="col">Ekleme Tarihi</th>
+          <th scope="col">Durumu</th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+      <tr *ngFor="let i of yapilacaklar; let i2=index ">
+        <th> {{i2+1}} </th>
+        <td> {{i.yapilacak}} </td>
+        <td> {{i.eklenmeTarihi | date:"dd.mm.yyyy - hh:mm "}} </td>
+        <td>
+
+          <button class="btn btn-success" (click)="btnSil(i)">Onayla</button>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>
+
+<ng-template #alertt>
+
+  <div class="alert alert-warning " style="border-radius: 10px; font-size: 19px; text-align: center; width: 650px; margin: 0 auto;" role="alert">
+    Yapılacak görev yok !
+  </div>
+</ng-template>
+
+
+
